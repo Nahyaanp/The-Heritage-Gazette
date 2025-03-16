@@ -1,0 +1,67 @@
+<div class="admin-title">
+  <h2>Blogs</h2>
+  <a href="/add-post" class="button">+ Add New</a>
+</div>
+
+<ul class="admin-posts">
+  <% posts.forEach(post => { %>
+      <li>
+          <a href="/post/<%= post._id %>">
+              <%= post.title %> &nearr;
+          </a>
+          <div class="admin-post-controls">
+              <a href="/edit-post/<%= post._id %>" class="btn">Edit</a>
+
+              <form action="/delete-post/<%= post._id %>?_method=DELETE" method="POST">
+                  <input type="submit" value="Delete" class="btn-delete btn">
+              </form>
+          </div>
+      </li>
+  <% }) %>
+</ul>
+
+<!-- News Section -->
+<div class="admin-title">
+  <h2>News</h2>
+  <a href="/add-news" class="button">+ Add New</a>
+</div>
+
+<ul class="admin-posts">
+  <% news.forEach(article => { %>
+      <li>
+          <a href="/news/<%= article._id %>">
+              <%= article.title %> &nearr;
+          </a>
+          <div class="admin-post-controls">
+              <a href="/edit-news/<%= article._id %>" class="btn">Edit</a>
+
+              <form action="/delete-news/<%= article._id %>?_method=DELETE" method="POST">
+                  <input type="submit" value="Delete" class="btn-delete btn">
+              </form>
+          </div>
+      </li>
+  <% }) %>
+</ul>
+
+<!-- Poetry Section -->
+<div class="admin-title">
+  <h2>Poetry</h2>
+  <a href="/add-poetry" class="button">+ Add New</a>
+</div>
+
+<ul class="admin-posts">
+  <% poetry.forEach(poem => { %>
+      <li>
+          <a href="/poetry/<%= poem._id %>">
+              <%= poem.title %> &nearr;
+          </a>
+          <div class="admin-post-controls">
+              <a href="/edit-poetry/<%= poem._id %>" class="btn">Edit</a>
+
+              <form action="/delete-poetry/<%= poem._id %>?_method=DELETE" method="POST">
+                  <input type="submit" value="Delete" class="btn-delete btn">
+              </form>
+          </div>
+      </li>
+  <% }) %>
+</ul>

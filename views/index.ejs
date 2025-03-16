@@ -1,34 +1,102 @@
-<div class = "home">
-    <h1 class = "home_heading">Heritage Gazette</h1>
-    <p class = "home_body">Bloging Page For BVHS </p>
+<div class="home">
+  <h4 class="home_heading" style="font-size: xxx-large;">Heritage Gazette</h4>
+  <p class="home_body">Blogging Page For BVHS</p>
 </div>
 
-<img src = "/" alt="Backgroung picture" class="hero-image" width="981" height="528">
+<img src="/public/img/image1_0.jpg" alt="Background picture" class="hero-image" width="981" height="528">
 
-<section class ="articles">
-    <h2 class = "articles_heading">Latest Posts</h2>
+<!-- Popup Form -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 id="modalTitle">Register / Login</h2>
 
-    <ul class = "article-ul">
-        <li>
+    <!-- Register Form -->
+    <form id="registerForm">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required>
 
-            <% data.forEach(post => { %>
-             
-            
-            <a href="/post/<%= post.id  %>">
-                <span><%= post.title  %></span>
-                <span class="article-list_date"><%= post.createdAt.toDateString()  %></span>
-            </a>
-        </li>
-        <% }) %>
+      <label for="email">Email:</label>
+      <input type="email" id="registerEmail" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="registerPassword" name="password" required>
+
+      <button type="submit">Register</button>
+      <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+    </form>
+
+    <!-- Login Form -->
+    <form id="loginForm" style="display: none;">
+      <label for="loginEmail">Email:</label>
+      <input type="email" id="loginEmail" name="email" required>
+
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" name="password" required>
+
+      <button type="submit">Login</button>
+      <p>Don't have an account? <a href="#" id="switchToRegister">Register</a></p>
+    </form>
+  </div>
+</div>
 
 
-    </ul>
+<!-- Latest Posts Section -->
+<section class="articles">
+  <h2 class="articles__heading">Latest Posts</h2>
 
-    <% if (nextPage !== null) { %>
-     <a href = "/?page=<%= nextPage %>" class = "pagination">&lt; View Older Posts</a>
-    <% } %>
-     
+  <ul class="article-ul">
+    <% posts.forEach(post => { %>
+      <li>
+        <a href="/post/<%= post._id %>">
+          <span><%= post.title %></span>
+          <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
 
+  <% if (nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination">&lt; View Older Posts</a>
+  <% } %>
+</section>
 
-    
+<!-- Latest News Section -->
+<section class="articles">
+  <h2 class="articles__heading">Latest News</h2>
+
+  <ul class="article-ul">
+    <% news.forEach(article => { %>
+      <li>
+        <a href="/news/<%= article._id %>">
+          <span><%= article.title %></span>
+          <span class="article-list__date"><%= article.createdAt.toDateString() %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+
+  <% if (nextPage !== null) { %>
+    <a href="/news?page=<%= nextPage %>" class="pagination">&lt; View Older News</a>
+  <% } %>
+</section>
+
+<!-- Latest Poetry Section -->
+<section class="articles">
+  <h2 class="articles__heading">Latest Poetry</h2>
+
+  <ul class="article-ul">
+    <% poetry.forEach(poem => { %>
+      <li>
+        <a href="/poetry/<%= poem._id %>">
+          <span><%= poem.title %></span>
+          <span class="article-list__date"><%= poem.createdAt.toDateString() %></span>
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+
+  <% if (nextPage !== null) { %>
+    <a href="/poetry?page=<%= nextPage %>" class="pagination">&lt; View Older Poetry</a>
+  <% } %>
 </section>

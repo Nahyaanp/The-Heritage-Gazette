@@ -1,0 +1,130 @@
+<header class="header">
+    <a href="/" class="header__logo">Admin Panel | Heritage Gazette</a>
+
+    <button class="menu-toggle" aria-label="Toggle navigation">
+        ☰
+    </button>
+
+    <nav class="header__nav">
+        <ul class="nav__list">
+            <li><a href="/">Home</a></li>
+            <li><a href="/add-post">Add Blog</a></li>
+            <li><a href="/add-news">Add News</a></li>
+            <li><a href="/add-poetry">Add Poetry</a></li>
+            <li><a href="/invite-admin">Add Admins</a></li>
+        </ul>
+    </nav>
+
+    <div class="header__button">
+        <a href="/logout">Logout</a>
+    </div>
+</header>
+
+<style>
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--brown);
+    padding: 15px 20px;
+}
+
+.header__logo {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--brown);
+}
+
+.header__nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav__list li {
+    display: inline;
+}
+
+.nav__list a {
+    text-decoration: none;
+    color: var(--brown);
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav__list a:hover {
+    color: #ffcc00;
+}
+
+.header__button a {
+    text-decoration: none;
+    background: #ff4d4d;
+    padding: 8px 15px;
+    color: white;
+    border-radius: 5px;
+}
+
+.header__button a:hover {
+    background: #cc0000;
+}
+
+/* Mobile Styles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--brown);
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .header__nav {
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .header__nav.active {
+        display: flex;
+        flex-direction: column;
+    }
+}
+</style>
+
+<script>
+document.querySelector(".menu-toggle").addEventListener("click", function() {
+    document.querySelector(".header__nav").classList.toggle("active");
+});
+</script>
